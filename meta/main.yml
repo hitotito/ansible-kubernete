@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: kubernete
   author: Hitoshi Okonogi
   description: role to install kubernete and configure
   company: hitotito
