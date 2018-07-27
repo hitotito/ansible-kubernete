@@ -1,0 +1,29 @@
+---
+
+# install portion
+- name: install dependent packages
+  apt:
+    name: "{{item}}"
+    state: installed
+  with_items:
+    - apt-transport-https
+    - curl
+
+- name: add kubernete repository apt key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: add kubernete repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    update_cache: yes
+
+- name: install kubernete components
+  apt:
+    name: "{{item}}"
+    state: installed
+  with_items:
+    - kubelet
+    - kubeadm
+    - kubectl
